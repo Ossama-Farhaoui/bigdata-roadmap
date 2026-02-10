@@ -50,3 +50,27 @@ print(len(late_orders))
 
 print("\nExemples de commandes anormales :")
 print(late_orders[["order_id", "delivery_delay_days"]].head())
+
+import matplotlib.pyplot as plt
+
+plt.figure()
+plt.hist(df_clean["delivery_delay_days"], bins=30)
+plt.xlabel("Délai de livraison (jours)")
+plt.ylabel("Nombre de commandes")
+plt.title("Distribution du délai de livraison")
+plt.show()
+
+plt.figure()
+plt.boxplot(df_clean["delivery_delay_days"], vert=False)
+plt.xlabel("Délai de livraison (jours)")
+plt.title("Boxplot du délai de livraison")
+plt.show()
+
+plt.figure()
+plt.hist(df_clean["delivery_delay_days"], bins=30, label="Toutes les commandes")
+plt.hist(late_orders["delivery_delay_days"], bins=30, label="Retards > 30 jours")
+plt.xlabel("Délai de livraison (jours)")
+plt.ylabel("Nombre de commandes")
+plt.legend()
+plt.title("Comparaison des délais de livraison")
+plt.show()
