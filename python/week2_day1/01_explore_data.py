@@ -27,3 +27,26 @@ print(df_clean[["order_id", "delivery_delay_days"]].head())
 
 print("\nStatistiques du délai de livraison :")
 print(df_clean["delivery_delay_days"].describe())
+
+# Seuil de livraison anormale (en jours)
+threshold = 30
+
+# Filtrer les commandes avec retard anormal
+late_orders = df_clean[df_clean["delivery_delay_days"] > threshold]
+
+print("\nNombre de commandes avec retard > 30 jours :")
+print(len(late_orders))
+
+print("\nExemples de commandes anormales :")
+print(late_orders[["order_id", "delivery_delay_days"]].head())
+# Seuil de livraison anormale (en jours)
+threshold = 30
+
+# Filtrer les commandes avec retard anormal
+late_orders = df_clean[df_clean["delivery_delay_days"] > threshold]
+
+print("\nNombre de commandes avec retard > 30 jours :")
+print(len(late_orders))
+
+print("\nExemples de commandes anormales :")
+print(late_orders[["order_id", "delivery_delay_days"]].head())
